@@ -1,0 +1,4 @@
+out/
+.test-out-a/
+.test-out-b/
+node_modules/

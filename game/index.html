@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Velvet Vault — a stealth heist game</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0b0f18; font-family: system-ui, sans-serif; }
+  #app { position: relative; width: 1280px; height: 720px; margin: 0 auto; }
+  canvas { display: block; width: 1280px; height: 720px; }
+  #hud {
+    position: absolute; top: 0; left: 0; right: 0; height: 64px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 20px; background: rgba(10,14,24,0.92);
+    border-bottom: 2px solid #c9a227; color: #e8c96a; z-index: 2;
+  }
+  #hud .title { font-family: Georgia, serif; font-size: 24px; letter-spacing: 2px; }
+  #hud .objective { font-size: 13px; color: #9aa7bd; margin-top: 2px; }
+  #hud .alarm-wrap { text-align: center; }
+  #hud .alarm-label { font-size: 13px; letter-spacing: 2px; margin-bottom: 4px; }
+  #hud .alarm-bar { width: 320px; height: 14px; background: #1a2233; border: 1px solid #c9a227; border-radius: 7px; overflow: hidden; }
+  #alarm-fill { height: 100%; width: 0%; background: #4ade80; transition: width 0.1s linear; }
+  #hud .right { text-align: right; font-size: 15px; line-height: 1.5; }
+  #hud .right span { margin-left: 16px; }
+  #hint {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 28px;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(10,14,24,0.85); color: #9aa7bd; font-size: 13px; z-index: 2;
+  }
+</style>
+</head>
+<body>
+<div id="app">
+  <canvas id="game" width="1280" height="720"></canvas>
+  <div id="hud">
+    <div>
+      <div class="title">THE VELVET VAULT</div>
+      <div class="objective" id="objective">Steal the Star of Meridian, then reach the vent.</div>
+    </div>
+    <div class="alarm-wrap">
+      <div class="alarm-label">ALARM <span id="alarm-num">0%</span></div>
+      <div class="alarm-bar"><div id="alarm-fill"></div></div>
+    </div>
+    <div class="right">
+      <span id="loot">LOOT ◇</span>
+      <span id="coins">COINS ●●●</span>
+      <span id="time">0:00</span>
+    </div>
+  </div>
+  <div id="hint">WASD / arrows — move &nbsp;·&nbsp; Click — toss a coin &nbsp;·&nbsp; Avoid the cones &nbsp;·&nbsp; Grab the diamond, reach the vent</div>
+</div>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
